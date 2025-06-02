@@ -1,0 +1,168 @@
+<<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EduAI - Plataforma de Aprendizagem Personalizada</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f5f7fa;
+            color: #333;
+            text-align: center;
+            line-height: 1.6;
+        }
+        header {
+            background: linear-gradient(135deg, #6e48aa, #9b59b6);
+            color: white;
+            padding: 3rem 1rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        header h1 {
+            font-size: 2.8rem;
+            margin-bottom: 0.5rem;
+        }
+        header h2 {
+            font-size: 1.3rem;
+            font-weight: 400;
+            margin-bottom: 1.5rem;
+        }
+        .cta-button {
+            background-color: #ff6b6b;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 25px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+        .cta-button:hover {
+            background-color: #e55a5a;
+            transform: scale(1.05);
+        }
+        .banner {
+            width: 100%;
+            max-width: 1000px; /* Limita a largura máxima do banner */
+            margin: 1.5rem auto; /* Centraliza o banner */
+            padding: 0 1rem;
+        }
+        .banner img {
+            width: 100%;
+            height: auto; /* Mantém a proporção da imagem */
+            max-height: 400px; /* Reduz a altura máxima para melhor equilíbrio */
+            object-fit: contain; /* Exibe a imagem inteira sem cortes */
+            border-radius: 10px;
+            display: block;
+        }
+        .banner img[src=""] {
+            display: none; /* Evita o ícone de imagem quebrada */
+        }
+        .benefits {
+            max-width: 1000px; /* Aumenta a largura para consistência com o banner */
+            margin: 3rem auto;
+            padding: 0 1rem;
+        }
+        .benefits h3 {
+            color: #6e48aa;
+            font-size: 2rem;
+            margin-bottom: 2rem;
+        }
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            padding: 0 1rem;
+        }
+        .benefit-card {
+            background: white;
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        .benefit-card:hover {
+            transform: translateY(-5px);
+        }
+        .benefit-card i {
+            font-size: 2.5rem;
+            color: #6e48aa;
+            margin-bottom: 1rem;
+        }
+        .benefit-card h4 {
+            color: #6e48aa;
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+        .benefit-card p {
+            font-size: 1rem;
+            color: #555;
+        }
+        footer {
+            background-color: #6e48aa;
+            color: white;
+            padding: 1rem;
+            margin-top: 2rem;
+        }
+        @media (max-width: 600px) {
+            header h1 {
+                font-size: 2rem;
+            }
+            header h2 {
+                font-size: 1rem;
+            }
+            .benefits h3 {
+                font-size: 1.5rem;
+            }
+            .banner img {
+                max-height: 300px; /* Ajusta a altura em telas menores */
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Cabeçalho -->
+    <header>
+        <h1>EduAI</h1>
+        <h2>Potencie o estudo com gamificação e inteligência artificial</h2>
+        <button class="cta-button">Comece já</button>
+    </header>
+    <!-- Banner -->
+    <div class="banner">
+        <img src="imagempgi.jpg" alt="Plataforma EduAI">
+    </div>
+    <!-- Seção de Benefícios -->
+    <div class="benefits">
+        <h3>O que ganhas com a EduAI?</h3>
+        <div class="benefits-grid">
+            <div class="benefit-card">
+                <i class="fas fa-question-circle"></i>
+                <h4>Questionários Interativos</h4>
+                <p>Exercícios adaptados ao teu nível para uma aprendizagem mais rápida e eficaz.</p>
+            </div>
+            <div class="benefit-card">
+                <i class="fas fa-star"></i>
+                <h4>Sistemas de Pontuação</h4>
+                <p>Ganha medalhas e pontos enquanto aprendes, mantendo a motivação no topo.</p>
+            </div>
+            <div class="benefit-card">
+                <i class="fas fa-robot"></i>
+                <h4>Assistente Virtual 24/7</h4>
+                <p>Tira dúvidas a qualquer hora com respostas instantâneas e personalizadas.</p>
+            </div>
+        </div>
+    </div>
+    <!-- Rodapé -->
+    <footer>
+        <p>© 2025 EduAI. Todos os direitos reservados.</p>
+    </footer>
+</body>
+</html>
