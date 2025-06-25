@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EduAI - Plano de Aprendizagem 🏅</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/feather-icons"></script>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #d6bcfa, #f0f4ff);
+            color: #6b46c1;
+            padding: 2rem;
+        }
+        nav {
+            background: #6b46c1;
+            padding: 1.5rem 3rem;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 15px rgba(107,70,193,0.3);
+        }
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+        }
+        nav a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: color 0.3s, transform 0.3s;
+        }
+        nav a:hover {
+            color: #f6ad55;
+            transform: scale(1.1);
+        }
+        .plano-container {
+            max-width: 900px;
+            margin: 100px auto 2rem;
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 3rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            animation: zoomIn 1s;
+        }
+        h1 {
+            font-size: 2.8rem;
+            text-align: center;
+            margin-bottom: 2rem;
+            animation: bounceIn 1s;
+        }
+        .lesson-card {
+            background: linear-gradient(135deg, #f9fafb, #f0f8ff);
+            border-radius: 15px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: transform 0.4s, box-shadow 0.4s;
+            animation: zoomIn 1s forwards;
+        }
+        .lesson-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 30px rgba(159,122,234,0.3);
+        }
+        .lesson-card h3 {
+            font-size: 1.4rem;
+            color: #6b46c1;
+            margin-bottom: 0.5rem;
+        }
+        .lesson-card p {
+            color: #6b7280;
+            font-size: 0.9rem;
+        }
+        .lesson-card button {
+            background: linear-gradient(90deg, #f6ad55, #f6e05e);
+            color: #6b46c1;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.3s;
+            animation: pulse 2s infinite;
+        }
+        .lesson-card button:hover {
+            transform: scale(1.1);
+        }
+        .medal {
+            color: #9f7aea;
+            font-size: 2rem;
+            animation: spin 2s infinite linear;
+        }
+        @keyframes zoomIn {
+            0% { transform: scale(0.8); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+        @keyframes bounceIn {
+            0% { transform: scale(0.3); opacity: 0; }
+            50% { transform: scale(1.2); opacity: 1; }
+            100% { transform: scale(1); }
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            .plano-container {
+                padding: 2rem;
+                margin: 100px 1.5rem 1rem;
+            }
+            .lesson-card {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+        }
+    </style>
+    <script>
+        function loadLessons() {
+            const discipline = localStorage.getItem('discipline') || 'Geral';
+            const planTitle = document.getElementById('plan-title');
+            const lessonsContainer = document.getElementById('lessons-container');
+            planTitle.textContent = `O Teu Plano de Aprendizagem em ${discipline} 📚`;
+
+            // Define lições com base na disciplina
+            let lessons = [];
+            if (discipline.toLowerCase().includes('matemática')) {
+                lessons = [
+                    { title: '🎥 Lição 1: Equações Lineares', description: 'Domina com vídeos interativos e exercícios práticos. 🚀' },
+                    { title: '📊 Lição 2: Funções Quadráticas', description: 'Explora gráficos e desafios gamificados. 🏆' }
+                ];
+            } else if (discipline.toLowerCase().includes('português')) {
+                lessons = [
+                    { title: '📝 Lição 1: Gramática', description: 'Aprende as regras com exercícios dinâmicos. ✍️' },
+                    { title: '📖 Lição 2: Interpretação de Texto', description: 'Desenvolve habilidades com textos interativos. 🌟' }
+                ];
+            } else {
+                lessons = [
+                    { title: '📚 Lição 1: Introdução ao Tema', description: 'Começa com conceitos básicos e desafios. 🚀' },
+                    { title: '🌟 Lição 2: Exploração Avançada', description: 'Aprofunda com exercícios gamificados. 🏅' }
+                ];
+            }
+
+            // Gera os cards de lições dinamicamente
+            lessonsContainer.innerHTML = '';
+            lessons.forEach((lesson, index) => {
+                const lessonCard = document.createElement('div');
+                lessonCard.className = 'lesson-card';
+                lessonCard.innerHTML = `
+                    <div>
+                        <h3>${lesson.title}</h3>
+                        <p>${lesson.description}</p>
+                    </div>
+                    <button onclick="alert('Lição iniciada!')">Começar 🌟</button>
+                    ${index === 1 ? '<i class="feather medal" data-feather="award"></i>' : ''}
+                `;
+                lessonsContainer.appendChild(lessonCard);
+            });
+
+            // Reaplica os ícones Feather
+            feather.replace();
+        }
+
+        document.addEventListener('DOMContentLoaded', loadLessons);
+    </script>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="onboarding.html">Onboarding</a></li>
+            <li><a href="plano.html">Plano</a></li>
+            <li><a href="assistente.html">Assistente</a></li>
+            <li><a href="progresso.html">Progresso</a></li>
+        </ul>
+    </nav>
+    <div class="plano-container">
+        <h1 id="plan-title">O Teu Plano de Aprendizagem 📚</h1>
+        <div id="lessons-container">
+            <!-- Lições serão geradas dinamicamente -->
+        </div>
+    </div>
+</body>
+</html>

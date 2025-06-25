@@ -1,11 +1,12 @@
-<<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt-PT">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EduAI - Plataforma de Aprendizagem Personalizada</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <title>EduAI - Aprende com AI ✨</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/feather-icons"></script>
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
     <style>
         * {
             box-sizing: border-box;
@@ -13,156 +14,252 @@
             padding: 0;
         }
         body {
-            font-family: 'Poppins', sans-serif;
-            background-color: #f5f7fa;
-            color: #333;
-            text-align: center;
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #d6bcfa, #f0f4ff);
+            color: #6b46c1;
             line-height: 1.6;
+            overflow-x: hidden;
+        }
+        #particles-js {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+        nav {
+            background: #6b46c1;
+            padding: 1.5rem 3rem;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 15px rgba(107,70,193,0.3);
+        }
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+        }
+        nav a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: color 0.3s, transform 0.3s;
+        }
+        nav a:hover {
+            color: #f6ad55;
+            transform: scale(1.1);
         }
         header {
-            background: linear-gradient(135deg, #6e48aa, #9b59b6);
-            color: white;
-            padding: 3rem 1rem;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            /* Substitua a URL abaixo pela sua imagem personalizada (ex.: hospede em Imgur e cole o link) */
+            background: linear-gradient(135deg, rgba(107,70,193,0.8), rgba(159,122,234,0.7)), url('imagempgi.jpg') center/cover;
+            color: #ffffff;
+            padding: 12rem 3rem 5rem;
+            text-align: center;
+            min-height: 600px;
+            position: relative;
+            z-index: 1;
         }
         header h1 {
-            font-size: 2.8rem;
-            margin-bottom: 0.5rem;
+            font-size: 4.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            animation: bounceIn 1s;
         }
-        header h2 {
-            font-size: 1.3rem;
+        header p {
+            font-size: 1.6rem;
             font-weight: 400;
-            margin-bottom: 1.5rem;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+            animation: fadeIn 1s 0.3s forwards;
+            opacity: 0;
         }
         .cta-button {
-            background-color: #ff6b6b;
-            color: white;
+            background: linear-gradient(90deg, #f6ad55, #f6e05e);
+            color: #6b46c1;
             border: none;
-            padding: 12px 30px;
-            border-radius: 25px;
-            font-size: 1.1rem;
+            padding: 1.2rem 3rem;
+            border-radius: 50px;
+            font-size: 1.3rem;
             font-weight: 600;
             cursor: pointer;
-            transition: background-color 0.3s, transform 0.2s;
+            transition: transform 0.3s, box-shadow 0.3s;
+            animation: pulse 2s infinite;
         }
         .cta-button:hover {
-            background-color: #e55a5a;
-            transform: scale(1.05);
-        }
-        .banner {
-            width: 100%;
-            max-width: 1000px; /* Limita a largura máxima do banner */
-            margin: 1.5rem auto; /* Centraliza o banner */
-            padding: 0 1rem;
-        }
-        .banner img {
-            width: 100%;
-            height: auto; /* Mantém a proporção da imagem */
-            max-height: 400px; /* Reduz a altura máxima para melhor equilíbrio */
-            object-fit: contain; /* Exibe a imagem inteira sem cortes */
-            border-radius: 10px;
-            display: block;
-        }
-        .banner img[src=""] {
-            display: none; /* Evita o ícone de imagem quebrada */
+            transform: scale(1.1);
+            box-shadow: 0 10px 25px rgba(246,173,85,0.5);
         }
         .benefits {
-            max-width: 1000px; /* Aumenta a largura para consistência com o banner */
-            margin: 3rem auto;
-            padding: 0 1rem;
+            max-width: 1200px;
+            margin: 4rem auto;
+            padding: 0 3rem;
         }
-        .benefits h3 {
-            color: #6e48aa;
-            font-size: 2rem;
-            margin-bottom: 2rem;
+        .benefits h2 {
+            font-size: 2.8rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            animation: fadeIn 1s;
         }
         .benefits-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
-            padding: 0 1rem;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
         }
         .benefit-card {
-            background: white;
-            border-radius: 10px;
+            background: #ffffff;
+            border-radius: 20px;
             padding: 2rem;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-            transition: transform 0.3s;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            text-align: center;
+            flex: 1;
+            min-width: 280px;
+            max-width: 360px;
+            transition: transform 0.4s, box-shadow 0.4s;
+            animation: zoomIn 1s forwards;
         }
         .benefit-card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-10px);
+            box-shadow: 0 12px 30px rgba(159,122,234,0.3);
         }
         .benefit-card i {
-            font-size: 2.5rem;
-            color: #6e48aa;
+            font-size: 3rem;
+            color: #9f7aea;
             margin-bottom: 1rem;
+            animation: bounce 2s infinite;
         }
-        .benefit-card h4 {
-            color: #6e48aa;
-            font-size: 1.3rem;
+        .benefit-card h3 {
+            font-size: 1.6rem;
+            color: #6b46c1;
             margin-bottom: 0.5rem;
         }
         .benefit-card p {
+            color: #6b7280;
             font-size: 1rem;
-            color: #555;
         }
         footer {
-            background-color: #6e48aa;
-            color: white;
-            padding: 1rem;
-            margin-top: 2rem;
+            background: #6b46c1;
+            color: #ffffff;
+            padding: 2rem;
+            text-align: center;
+            font-size: 0.9rem;
         }
-        @media (max-width: 600px) {
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
+        @keyframes bounceIn {
+            0% { transform: scale(0.3); opacity: 0; }
+            50% { transform: scale(1.2); opacity: 1; }
+            100% { transform: scale(1); }
+        }
+        @keyframes zoomIn {
+            0% { transform: scale(0.8); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-10px); }
+            60% { transform: translateY(-5px); }
+        }
+        @media (max-width: 1024px) {
+            .benefits-grid {
+                gap: 1rem;
+            }
+            .benefit-card {
+                min-width: 200px;
+            }
+        }
+        @media (max-width: 768px) {
+            header {
+                padding: 8rem 1.5rem 4rem;
+            }
             header h1 {
-                font-size: 2rem;
+                font-size: 3rem;
             }
-            header h2 {
-                font-size: 1rem;
+            header p {
+                font-size: 1.3rem;
             }
-            .benefits h3 {
-                font-size: 1.5rem;
+            nav ul {
+                flex-direction: column;
+                gap: 1rem;
             }
-            .banner img {
-                max-height: 300px; /* Ajusta a altura em telas menores */
+            .benefits {
+                padding: 0 1.5rem;
+            }
+            .benefits-grid {
+                flex-direction: row;
+                gap: 1rem;
+            }
+            .benefit-card {
+                min-width: 180px;
+                padding: 1.5rem;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Cabeçalho -->
+    <div id="particles-js"></div>
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="onboarding.html">Onboarding</a></li>
+            <li><a href="plano.html">Plano</a></li>
+            <li><a href="assistente.html">Assistente</a></li>
+            <li><a href="progresso.html">Progresso</a></li>
+        </ul>
+    </nav>
     <header>
-        <h1>EduAI</h1>
-        <h2>Potencie o estudo com gamificação e inteligência artificial</h2>
-        <button class="cta-button">Comece já</button>
+        <h1>EduAI 🎓</h1>
+        <p>Aprende de forma personalizada com AI, onde quer que estejas! 🚀</p>
+        <a href="onboarding.html"><button class="cta-button">Começar Agora 🌟</button></a>
     </header>
-    <!-- Banner -->
-    <div class="banner">
-        <img src="imagempgi.jpg" alt="Plataforma EduAI">
-    </div>
-    <!-- Seção de Benefícios -->
-    <div class="benefits">
-        <h3>O que ganhas com a EduAI?</h3>
+    <section class="benefits">
+        <h2>✨ O que ganhas com a EduAI</h2>
         <div class="benefits-grid">
             <div class="benefit-card">
-                <i class="fas fa-question-circle"></i>
-                <h4>Questionários Interativos</h4>
-                <p>Exercícios adaptados ao teu nível para uma aprendizagem mais rápida e eficaz.</p>
+                <i data-feather="target"></i>
+                <h3>Teste Diagnóstico 🎯</h3>
+                <p>Identifica as tuas falhas em minutos e recebe um plano personalizado.</p>
             </div>
             <div class="benefit-card">
-                <i class="fas fa-star"></i>
-                <h4>Sistemas de Pontuação</h4>
-                <p>Ganha medalhas e pontos enquanto aprendes, mantendo a motivação no topo.</p>
+                <i data-feather="award"></i>
+                <h3>Gamificação 🏅</h3>
+                <p>Conquista medalhas e pontos para manter a motivação!</p>
             </div>
             <div class="benefit-card">
-                <i class="fas fa-robot"></i>
-                <h4>Assistente Virtual 24/7</h4>
-                <p>Tira dúvidas a qualquer hora com respostas instantâneas e personalizadas.</p>
+                <i data-feather="message-circle"></i>
+                <h3>Assistente Virtual 🤖</h3>
+                <p>Tira dúvidas instantaneamente, 24 horas por dia.</p>
             </div>
         </div>
-    </div>
-    <!-- Rodapé -->
+    </section>
     <footer>
         <p>© 2025 EduAI. Todos os direitos reservados.</p>
     </footer>
+    <script>
+        feather.replace();
+        particlesJS('particles-js', {
+            particles: {
+                number: { value: 60, density: { enable: true, value_area: 800 } },
+                color: { value: '#9f7aea' },
+                shape: { type: 'circle' },
+                opacity: { value: 0.5, random: true },
+                size: { value: 4, random: true },
+                move: { enable: true, speed: 3, direction: 'none', random: true }
+            },
+            interactivity: {
+                detect_on: 'canvas',
+                events: { onhover: { enable: true, mode: 'repulse' }, onclick: { enable: true, mode: 'push' } },
+                modes: { repulse: { distance: 100 }, push: { particles_nb: 4 } }
+            }
+        });
+    </script>
 </body>
 </html>

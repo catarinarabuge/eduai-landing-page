@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EduAI - Onboarding 👋</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/feather-icons"></script>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, rgba(107,70,193,0.8), rgba(159,122,234,0.7)), url('https://cdn.pixabay.com/photo/2020/07/08/04/12/technology-5382462_1280.jpg') center/cover;
+            color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        nav {
+            background: #6b46c1;
+            padding: 1.5rem 3rem;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 15px rgba(107,70,193,0.3);
+        }
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+        }
+        nav a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: color 0.3s, transform 0.3s;
+        }
+        nav a:hover {
+            color: #f6ad55;
+            transform: scale(1.1);
+        }
+        .onboarding-container {
+            background: rgba(255,255,255,0.95);
+            border-radius: 20px;
+            padding: 3rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            max-width: 500px;
+            text-align: center;
+            margin-top: 100px;
+            animation: zoomIn 1s forwards;
+            color: #6b46c1;
+        }
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            animation: bounceIn 1s;
+        }
+        p {
+            color: #6b7280;
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+        }
+        .form-group {
+            margin-bottom: 1.5rem;
+            text-align: left;
+        }
+        label {
+            color: #6b46c1;
+            font-weight: 600;
+            font-size: 0.9rem;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+        input {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #d1d5db;
+            border-radius: 15px;
+            font-size: 1rem;
+            transition: border-color 0.3s, transform 0.3s;
+        }
+        input:focus {
+            border-color: #9f7aea;
+            transform: scale(1.02);
+            outline: none;
+        }
+        .cta-button {
+            background: linear-gradient(90deg, #f6ad55, #f6e05e);
+            color: #6b46c1;
+            border: none;
+            padding: 1rem;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+            transition: transform 0.3s, box-shadow 0.3s;
+            animation: pulse 2s infinite;
+        }
+        .cta-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 25px rgba(246,173,85,0.5);
+        }
+        .error {
+            color: #ff0000;
+            font-size: 0.8rem;
+            margin-top: 0.5rem;
+            display: none;
+            animation: fadeIn 0.5s;
+        }
+        @keyframes zoomIn {
+            0% { transform: scale(0.8); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+        @keyframes bounceIn {
+            0% { transform: scale(0.3); opacity: 0; }
+            50% { transform: scale(1.2); opacity: 1; }
+            100% { transform: scale(1); }
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            .onboarding-container {
+                padding: 2rem;
+                margin: 100px 1.5rem 1rem;
+            }
+        }
+    </style>
+    <script>
+        function startTest() {
+            const name = document.getElementById('name').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const discipline = document.getElementById('discipline').value.trim();
+            const nameError = document.getElementById('name-error');
+            const emailError = document.getElementById('email-error');
+            let valid = true;
+            nameError.style.display = 'none';
+            emailError.style.display = 'none';
+            if (!name) {
+                nameError.style.display = 'block';
+                valid = false;
+            }
+            if (!email || !email.includes('@')) {
+                emailError.style.display = 'block';
+                valid = false;
+            }
+            if (valid) {
+                localStorage.setItem('name', name);
+                localStorage.setItem('discipline', discipline || 'Geral');
+                alert(`Bem-vindo, ${name}! Teste diagnóstico iniciado para ${discipline || 'geral'}.`);
+                window.location.href = 'plano.html';
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            feather.replace();
+            const nameInput = document.getElementById('name');
+            nameInput.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') startTest();
+            });
+        });
+    </script>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="onboarding.html">Onboarding</a></li>
+            <li><a href="plano.html">Plano</a></li>
+            <li><a href="assistente.html">Assistente</a></li>
+            <li><a href="progresso.html">Progresso</a></li>
+        </ul>
+    </nav>
+    <div class="onboarding-container">
+        <h1>👋 Começa a Tua Jornada!</h1>
+        <p>Preenche os dados para criar o teu plano de aprendizagem personalizado. 📚</p>
+        <div class="form-group">
+            <label for="name">Nome</label>
+            <input id="name" type="text" placeholder="Digite o seu nome">
+            <div id="name-error" class="error">Por favor, insira o seu nome.</div>
+        </div>
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input id="email" type="email" placeholder="Digite o seu email">
+            <div id="email-error" class="error">Por favor, insira um email válido.</div>
+        </div>
+        <div class="form-group">
+            <label for="discipline">Disciplina (opcional)</label>
+            <input id="discipline" type="text" placeholder="ex.: Matemática">
+        </div>
+        <button class="cta-button" onclick="startTest()">Continuar 🚀</button>
+    </div>
+</body>
+</html>
